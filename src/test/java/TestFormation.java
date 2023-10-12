@@ -1,7 +1,12 @@
 
+import org.example.Enseignement;
 import org.example.Etudiant;
+import org.example.Evaluation;
 import org.example.Formation;
 import org.junit.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 
 public class TestFormation {
@@ -30,18 +35,42 @@ public class TestFormation {
     }
     @Test
     public void testCalculerMoyenneGenerale(){
-        Formation formation = new Formation("TestTriEtudiant");
-        // Creation de mes etudiant
-        Etudiant etudiantUn = new Etudiant("Luckas","Jacquemot","01");
-        Etudiant etudiantDeux = new Etudiant("Paul","Jacques","02");
-        Etudiant etudiantTrois = new Etudiant("Pierre","Bredouille","03");
-        //Ajouter étudiant à formation
-        formation.ajouterEtudiant(etudiantUn);
-        //Créer des évaluations différentes notes
-        //Ajouter evaluation a formation
-        //Appeler méthode pour calculer moyenne generale
+        //Instancier Formation
+        Formation formation = new Formation("TestCalculMoyenne");
+        //Creer plusieurs enseignements
+        Enseignement enseignementUn = new Enseignement(false, "Mathématique","ElProfessor","BTS");
+        //Creer plusieurs etudiant
+        Etudiant etudiantUn = new Etudiant("Mael","Feur","02");
+        //Ajouter Etudiant à enseignement
+        enseignementUn.getLesEtudiants().add(etudiantUn);
+        //Ajouter les enseignements à la formation
+        formation.getLesEnseignements().add(enseignementUn);
+        //Creer des evaluations
+        Evaluation evalUn = new Evaluation(10,1,Etudiant)
+        //Ajouter evaluation a enseignement
+        enseignementUn.ajouterEvaluation(evalUn);
+        // Appeler méthode pour calcul moyenne G
+        double moyenneGenerale = Formation.calculerMoyenneGeneral();
+        //Verifier resultat AssertEquals
+        assertEquals();
+    }
+    @Test
+    public void testTriEtudiants(){
+        //Instancier une Formation
+        //Creer plusieurs etudiants
+        //Ajouter etudiant à formation
+        //Appeler methode Tri
+        //Recuperer Arraylist des Etudiants trié
+        //Verifier que les etudiants sont trie
 
-
-
+    }
+    @Test
+    public void testLesAdmis(){
+        //Instancier une Formation
+        //Creer plusieurs etudiants
+        //Ajouter etudiant à formation
+        //Appeler methode les Admis
+        //Recuperer ArrayList des Etudiants admis
+        // Verifier que les etudiants sont admis
     }
 }

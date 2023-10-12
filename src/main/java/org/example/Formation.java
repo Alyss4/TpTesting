@@ -50,8 +50,10 @@ public class Formation {
 
     }
 
-    public void calculerMoyenneGeneral(){
-        ArrayList<Etudiant> lesEtudiants = getLesEtudiants();
+    public static double calculerMoyenneGeneral(){
+        //ArrayList<Etudiant> lesEtudiants = getLesEtudiants();
+        double expresult = 0;
+        return expresult;
 
     }
 
