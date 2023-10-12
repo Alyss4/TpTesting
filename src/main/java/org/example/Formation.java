@@ -1,6 +1,5 @@
 package org.example;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Formation {
@@ -9,6 +8,7 @@ public class Formation {
     private ArrayList<Enseignement> lesEnseignements;
 
     public Formation(String nom){
+
         this.nom = nom;
     }
 
@@ -36,25 +36,24 @@ public class Formation {
         this.lesEnseignements = lesEnseignements;
     }
     public void ajouterEtudiant(Etudiant etu) {
-        //if (lesEtudiant == null){
-        //lesEtudiants = new ArrayList<>();
-        //}
-        //lesEtudiants.add(etu);
+        if (lesEtudiants == null){
+        lesEtudiants = new ArrayList<>();
+        }
+        lesEtudiants.add(etu);
     }
     public ArrayList<Etudiant> lesAdmis()
     {
         return lesEtudiants;
     }
-    public void trierLesEtudiants(){
-        //ArrayList<Etudiant> lesEtudiants = getLesEtudiants();
+    public ArrayList<Etudiant> trierLesEtudiants(String critere){
 
+        return null;
     }
 
-    public static double calculerMoyenneGeneral(){
+    //public static double calculerMoyenneGeneral(){
         //ArrayList<Etudiant> lesEtudiants = getLesEtudiants();
-        double expresult = 0;
-        return expresult;
 
-    }
+
+    //}
 
 }

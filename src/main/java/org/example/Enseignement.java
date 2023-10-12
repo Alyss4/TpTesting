@@ -35,6 +35,11 @@ public class Enseignement {
     public void setLesEtudiants(ArrayList<Etudiant> lesEtudiants) {
         this.lesEtudiants = lesEtudiants;
     }
+    public ArrayList<Evaluation> getLesEvaluations(){ return lesEvaluations; }
+
+    public void setLesEvaluations(ArrayList<Evaluation> lesEvaluations) {
+        this.lesEvaluations = lesEvaluations;
+    }
 
     public Matiere getLaMatiere() {
         return laMatiere;
@@ -61,7 +66,7 @@ public class Enseignement {
     }
 
     public void ajouterEvaluation(Evaluation eval){
-        //lesEvaluations.add(eval);
+        lesEvaluations.add(eval);
 
     }
 }

@@ -6,7 +6,7 @@ public class Evaluation {
     private Etudiant lEtudiant;
     private Matiere laMatiere;
 
-    private Evaluation(double laNote, int leCoeff, Etudiant lEtudiant, Matiere laMatiere){
+    public Evaluation(double laNote, int leCoeff, Etudiant lEtudiant, Matiere laMatiere){
         this.laNote = laNote;
         this.leCoeff = leCoeff;
         this.lEtudiant = lEtudiant;

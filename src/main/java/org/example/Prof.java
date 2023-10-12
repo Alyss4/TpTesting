@@ -20,7 +20,7 @@ public class Prof extends Personne {
         this.status = status;
     }
     public void ajouterEnseignements(Enseignement unEnseignement){
-
+        lesEnseignements.add(unEnseignement);
 
     }
 

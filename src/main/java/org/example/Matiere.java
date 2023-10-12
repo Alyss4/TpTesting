@@ -18,7 +18,7 @@ public class Matiere {
         this.nom = nom;
     }
     public void ajouterProfHabilite(Prof prof){
-        //lesProfsHabilites.add(prof);
+        lesProfsHabilites.add(prof);
 
     }
 }
