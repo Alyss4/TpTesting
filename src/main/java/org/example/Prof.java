@@ -9,6 +9,7 @@ public class Prof extends Personne {
     public Prof(String nom, String prenom, String stat){
         super(nom,prenom);
         this.setStatus(stat);
+        this.lesEnseignements = new ArrayList<>();
 
     }
 
@@ -20,8 +21,15 @@ public class Prof extends Personne {
         this.status = status;
     }
     public void ajouterEnseignements(Enseignement unEnseignement){
-        lesEnseignements.add(unEnseignement);
+        getLesEnseignements().add(unEnseignement);
 
     }
 
+    public ArrayList<Enseignement> getLesEnseignements() {
+        return lesEnseignements;
+    }
+
+    public void setLesEnseignements(ArrayList<Enseignement> lesEnseignements) {
+        this.lesEnseignements = lesEnseignements;
+    }
 }

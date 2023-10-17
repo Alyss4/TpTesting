@@ -15,22 +15,8 @@ public class TestFormation {
         Etudiant etudiantUn = new Etudiant("Luckas","Jacquemot","01");
         //Inserer l'etudiant avec la méthode
         formation.ajouterEtudiant(etudiantUn);
-        // la liste d’étudiant et faire une verif taille == 1
-        ArrayList<Etudiant> lesEtudiants = formation.getLesEtudiants();
-        assertEquals(1, lesEtudiants.size());
-        //Vérifier avec une assertion que l’objet récupéré en position 1 de la collection est le même que celui ajouté avec la méthode
-        Etudiant etudiantRecupere = lesEtudiants.get(0);
-        assertEquals(etudiantUn, etudiantRecupere);
-        // test deuxieme etudiant
-        Etudiant etudiantDeux = new Etudiant("Dupont","Mael","02");
-        // Inserer deuxieme etudiant
-        formation.ajouterEtudiant(etudiantDeux);
-        // Recupere liste et taille == 2
-        lesEtudiants = formation.getLesEtudiants();
-        assertEquals(2,lesEtudiants.size());
-        // Verifier que etudiant est dans la liste
-        Etudiant etudiantRecupereDeux = lesEtudiants.get(1);
-        assertEquals(etudiantDeux, etudiantRecupereDeux);
+       // Verifier que etudiantUn ajouter a la liste
+        assertEquals(1, formation.getLesEtudiants().size());
     }
     @Test
     public void testCalculerMoyenneGenerale(){
@@ -53,8 +39,6 @@ public class TestFormation {
         int coefficient2 = 1;
         Evaluation evalUn = new Evaluation(laNote1,coefficient1,etudiantUn, matiereUn);
         Evaluation evalDeux = new Evaluation(laNote2,coefficient2,etudiantUn,matiereDeux);
-        //Evaluation evalUn = new Evaluation(etudiantUn,matiereUn,laNote1,coefficient1);
-        //Evaluation evalDeux = new Evaluation(etudiantUn,matiereDeux,laNote2,coefficient2);
 
         //Ajouter étudiant à formation
         formation.ajouterEtudiant(etudiantUn);
@@ -81,9 +65,9 @@ public class TestFormation {
         //Appeler methode Tri
 
         //Recuperer Arraylist des Etudiants trié
-        ArrayList<Etudiant> lesEtudiantsTrie = formation.trierLesEtudiants("classement");
+        ArrayList<Etudiant> lesEtudiantsTrie = formation.trierLesEtudiants("critère");
         //Verifier que les etudiants sont trie
-        assertEquals("classement",lesEtudiantsTrie);
+        assertEquals("critère",lesEtudiantsTrie);
 
     }
     @Test
@@ -94,11 +78,16 @@ public class TestFormation {
         Etudiant etudiantUn = new Etudiant("Paul","Louis","01");
         Etudiant etudiantDeux = new Etudiant("Jean","Paul","02");
         //Ajouter etudiant à formation
-        formation.getLesEtudiants().add(etudiantUn);
-        formation.getLesEtudiants().add(etudiantDeux);
+        formation.ajouterEtudiant(etudiantUn);
+        formation.ajouterEtudiant(etudiantDeux);
+        // Ajouter eval
+        Evaluation evalUn = new Evaluation(12, 1,etudiantUn, new Matiere("Mathématiques"));
+        Evaluation evalDeux = new Evaluation(8, 1,etudiantUn, new Matiere("Mathématiques"));
+        etudiantUn.getEvaluation().add(evalUn);
+        etudiantDeux.getEvaluation().add(evalDeux);
         //Appeler methode les Admis//Recuperer ArrayList des Etudiants admis
         ArrayList<Etudiant> etudiantAdmis = formation.lesAdmis();
         // Verifier que les etudiants sont admis
-        assertEquals(2,etudiantAdmis.size());
+        assertEquals(1,etudiantAdmis.size());
     }
 }

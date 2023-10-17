@@ -47,13 +47,16 @@ public class Formation {
         ArrayList<Etudiant> etudiantsAdmis = new ArrayList<>();
 
         for (Etudiant etudiant : lesEtudiants) {
-            double moyenneGenerale = etudiant
+            double moyenneGenerale = etudiant.calculMoyenneEtudiant(); //
+
             if (moyenneGenerale > 10.0) {
                 etudiantsAdmis.add(etudiant);
             }
         }
+
         return etudiantsAdmis;
     }
+
     public ArrayList<Etudiant> trierLesEtudiants(String critere){
 
         return null;
@@ -63,9 +66,9 @@ public class Formation {
         if (lesEtudiants.isEmpty()) {
             return 0.0;
         }
-//je crée deux variable tampon
-        double totalNote = 5.0;
-        int totalCoeff = 1;
+        //je crée deux variable tampon
+        double totalNote = 0.0;
+        int totalCoeff = 0;
 
         for (Etudiant etudiant : lesEtudiants) {
             for (Evaluation evaluation : etudiant.getEvaluation()) {
