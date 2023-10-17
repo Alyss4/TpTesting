@@ -19,6 +19,6 @@ public class TestEnseignement {
         //Recuperer Arraylist enseignement
         ArrayList<Evaluation> EvaluationAjouter = enseignement.getLesEvaluations();
         //Verifier que evaluation ajouter à enseignement
-        assertEquals(2,EvaluationAjouter);
+        assertEquals(2,EvaluationAjouter.size());
     }
 }

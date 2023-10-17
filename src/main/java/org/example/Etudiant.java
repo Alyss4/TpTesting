@@ -1,8 +1,13 @@
 package org.example;
 
+import java.util.ArrayList;
+
 public class Etudiant extends Personne {
     private String code;
     private Formation laFormationSuivie;
+
+    private ArrayList<Evaluation> evaluation = new ArrayList<>();
+
 
     public Etudiant(String nom, String prenom, String code) {
         super(nom,prenom);
@@ -23,5 +28,8 @@ public class Etudiant extends Personne {
 
     public void setLaFormationSuivie(Formation laFormationSuivie) {
         this.laFormationSuivie = laFormationSuivie;
+    }
+    public ArrayList<Evaluation> getEvaluation() {
+        return evaluation;
     }
 }

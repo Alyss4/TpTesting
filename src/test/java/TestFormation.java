@@ -36,34 +36,37 @@ public class TestFormation {
     public void testCalculerMoyenneGenerale(){
         //Instancier Formation
         Formation formation = new Formation("TestCalculMoyenne");
-        //Creer plusieurs enseignements
-        Enseignement enseignementUn = new Enseignement(false, new Matiere("Mathématiques"),new Prof("Donde","linger","status"),new Formation("BTS1"));
-        Enseignement enseignementDeux = new Enseignement(false, new Matiere("Philo"),new Prof("Gau","Thier","status"),new Formation("BTS2"));
-        //Creer plusieurs etudiant
+        // Instancier enseignement
+        //Enseignement enseignement = new Enseignement(facultatif, laMatiere, leProf, laFormation);
+        Enseignement enseignement =  new Enseignement(false, new Matiere("Mathématiques"),new Prof("Donde","linger","status"),new Formation("BTS1"));
+        //Créer 1 etudiant pour ses éval
         Etudiant etudiantUn = new Etudiant("Mael","Lambert","02");
-        Etudiant etudiantDeux = new Etudiant("Ethan","Wiktor","02");
+
         //Creer matière
         Matiere matiereUn = new Matiere("Maths");
         Matiere matiereDeux = new Matiere("Philo");
-        //Creer des evaluations
-        Evaluation evalUn = new Evaluation(10,1,etudiantUn, matiereUn);
-        Evaluation evalDeux = new Evaluation(10,1,etudiantDeux,matiereDeux);
-        //Ajouter Etudiant à enseignement
-        enseignementUn.getLesEtudiants().add(etudiantUn);
-        enseignementDeux.getLesEtudiants().add(etudiantDeux);
-        //Ajouter les enseignements à la formation
-        formation.getLesEnseignements().add(enseignementUn);
-        formation.getLesEnseignements().add(enseignementDeux);
-        //Ajouter matière à enseignement
-        enseignementUn.setLaMatiere(matiereUn);
-        enseignementDeux.setLaMatiere(matiereDeux);
-        //Ajouter evaluation a enseignement
-        enseignementUn.ajouterEvaluation(evalUn);
-        enseignementDeux.ajouterEvaluation(evalDeux);
-        // Appeler méthode pour calcul moyenne G
-        double moyenneGenerale = formation.calculerMoyenneGeneral();
-        //Verifier resultat AssertEquals
-        assertEquals(10,moyenneGenerale);
+
+        //Creer des evaluations, notes et coeff
+        double laNote1 = 5.0;
+        int coefficient1 = 1;
+        double laNote2 = 5.0;
+        int coefficient2 = 1;
+        Evaluation evalUn = new Evaluation(laNote1,coefficient1,etudiantUn, matiereUn);
+        Evaluation evalDeux = new Evaluation(laNote2,coefficient2,etudiantUn,matiereDeux);
+        //Evaluation evalUn = new Evaluation(etudiantUn,matiereUn,laNote1,coefficient1);
+        //Evaluation evalDeux = new Evaluation(etudiantUn,matiereDeux,laNote2,coefficient2);
+
+        //Ajouter étudiant à formation
+        formation.ajouterEtudiant(etudiantUn);
+        // Ajouter les éval dans l'étudiant
+        enseignement.ajouterEvaluation(evalUn);
+        enseignement.ajouterEvaluation(evalDeux);
+        // Appeler la méthode de calcul de la moyenne générale
+        double moyenneTotal = formation.calculMoyenneGeneral();
+        // Calculer la moyenne attendue
+        double moyenneAttendue = (laNote1*coefficient1 + laNote2*coefficient2) / (coefficient1 + coefficient2);
+        assertEquals(moyenneAttendue,moyenneTotal, 0.01);
+
     }
     @Test
     public void testTriEtudiants(){
@@ -96,6 +99,6 @@ public class TestFormation {
         //Appeler methode les Admis//Recuperer ArrayList des Etudiants admis
         ArrayList<Etudiant> etudiantAdmis = formation.lesAdmis();
         // Verifier que les etudiants sont admis
-        assertEquals(2,etudiantAdmis);
+        assertEquals(2,etudiantAdmis.size());
     }
 }
