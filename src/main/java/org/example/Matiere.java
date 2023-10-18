@@ -17,8 +17,15 @@ public class Matiere {
     public void setNom(String nom) {
         this.nom = nom;
     }
-    public void ajouterProfHabilite(Prof prof){
-        lesProfsHabilites.add(prof);
 
+    public ArrayList<Prof> getLesProfsHabilites() {
+        return lesProfsHabilites;
+    }
+
+    public void ajouterProfHabilite(Prof prof){
+        if (lesProfsHabilites == null){
+            lesProfsHabilites = new ArrayList<>();
+        }
+        lesProfsHabilites.add(prof);
     }
 }
